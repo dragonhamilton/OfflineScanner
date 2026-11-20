@@ -1,0 +1,14 @@
+node_modules/
+dist/
+data/
+.env
+.DS_Store
+test-results/
+playwright-report/
+e2e/fixtures/generated/
+__pycache__/
+data-e2e/
+.venv/
+venv/
+target/
+build/

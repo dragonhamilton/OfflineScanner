@@ -1,0 +1,27 @@
+{
+  "name": "offline-scanner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline bookshelf scanner: photograph a shelf, slice it into spines, read them with local OCR and keep the library in PostgreSQL.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.21",
+    "pnpm": ">=10.16"
+  },
+  "scripts": {
+    "doctor": "bash scripts/doctor.sh",
+    "dev": "concurrently -n server,web -c blue,green \"pnpm --filter @scanner/server dev\" \"pnpm --filter @scanner/web dev\"",
+    "build": "pnpm --filter @scanner/web build",
+    "start": "pnpm --filter @scanner/server start",
+    "db:migrate": "pnpm --filter @scanner/server db:migrate",
+    "typecheck": "pnpm -r typecheck && tsc -p tsconfig.json",
+    "test": "pnpm -r test",
+    "e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "~1.56.0",
+    "@types/node": "^22.18.0",
+    "concurrently": "^9.2.0",
+    "typescript": "^5.9.2"
+  }
+}

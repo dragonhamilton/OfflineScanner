@@ -1,0 +1,16 @@
+[project]
+name = "rapidocr-sidecar"
+version = "0.1.0"
+description = "RapidOCR worker for OfflineScanner (OCR_ENGINE=rapidocr)"
+# rapidocr-onnxruntime 1.3/1.4 bundles its ONNX models inside the wheel, so it
+# works without internet. The newer "rapidocr" package downloads models at
+# runtime and will NOT work here. Its wheels stop at Python 3.12.
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "rapidocr-onnxruntime>=1.3.24,<1.5",
+]
+
+[tool.uv]
+package = false
+# Use the Python already installed; never try to download one.
+python-downloads = "never"

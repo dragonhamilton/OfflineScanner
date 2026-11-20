@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+
+# The internal npm mirror rarely has releases younger than ~2 weeks.
+# Only resolve versions that are at least 21 days old (value is in minutes).
+minimumReleaseAge: 30240
+
+# pnpm 10 skips dependency install scripts unless listed here.
+# esbuild (used by vite/vitest/tsx) verifies its platform binary in postinstall.
+# sharp >= 0.33 ships prebuilt libvips as npm packages and needs no script,
+# so it is deliberately NOT listed: if it ever tries to build from source,
+# that would need downloads this environment can't make.
+onlyBuiltDependencies:
+  - esbuild
+
+# These have install scripts we don't need: sharp's only checks for its
+# prebuilt binary, tesseract.js's is an opencollective banner.
+ignoredBuiltDependencies:
+  - sharp
+  - tesseract.js
