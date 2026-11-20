@@ -30,19 +30,6 @@ e2e             Playwright tests
 scripts/doctor.sh  environment check
 ```
 
-## Install on a Mac (with internet)
-
-```bash
-bash scripts/setup-mac.sh
-```
-
-Installs pnpm and PostgreSQL 16 with Homebrew (plus Node 22 if yours is older
-than 22.21), starts Postgres, creates the `scanner` role and both databases,
-writes `.env`, installs packages without writing a lockfile, and downloads
-Playwright's Chromium. Add `--with-rapidocr` for uv + Python 3.12, or
-`--skip-browser` to test with your installed Chrome
-(`PLAYWRIGHT_CHANNEL=chrome pnpm e2e`). Safe to rerun.
-
 ## Install (offline machine)
 
 Packages come only from the internal npm/PyPI mirrors, which lack most
